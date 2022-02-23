@@ -6,8 +6,9 @@ const fs = require("fs");
 app.get("/", function (req, res) {
   res.sendFile(__dirname, "/dist/index.html");
 });
-app.listen(process.env.PORT || 3000);
-console.log(process.env.PORT);
+app.listen(process.env.PORT || 3000, () => {
+  console.log(process.env.PORT);
+});
 
 app.use(express.static("dist"));
 // const cors = require("cors");
