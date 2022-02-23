@@ -55,6 +55,7 @@ const db = {
   host: "cjddnjfql2.cafe24.com",
   user: "cjddnjfql2",
   password: "wjdwhdgus!23",
+  port: 3306,
   multipleStatements: true,
   typeCast: function (field, next) {
     if (field.type == "VAR_STRING") {
