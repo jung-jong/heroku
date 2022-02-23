@@ -49,11 +49,11 @@ fs.watchFile(__dirname + "/sql.js", (curr, prev) => {
 });
 
 const db = {
-  database: "product",
+  database: "cjddnjfql",
   connectionLimit: 10,
-  host: "127.0.0.1",
-  user: "root",
-  password: "1111",
+  host: "cjddnjfql2.cafe24.com",
+  user: "cjddnjfql2",
+  password: "wjdwhdgus!23",
 };
 
 const dbPool = require("mysql").createPool(db);
