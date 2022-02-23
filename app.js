@@ -6,7 +6,7 @@ const fs = require("fs");
 app.get("/", function (req, res) {
   res.sendFile(__dirname, "/dist/index.html");
 });
-app.listen(process.env.PORT || 3000);
+// app.listen(process.env.PORT || 3000);
 
 app.use(express.static("dist"));
 // const cors = require("cors");
@@ -36,9 +36,10 @@ app.use(
   })
 );
 
-// const server = app.listen(3000, () => {
-//   console.log("Server started. port 3000.");
-// });
+const server = app.listen(3000 || process.env.PORT, () => {
+  console.log("Server started. port 3000.");
+  console.log("process.env.PORT");
+});
 
 let sql = require("./sql.js");
 
@@ -49,11 +50,18 @@ fs.watchFile(__dirname + "/sql.js", (curr, prev) => {
 });
 
 const db = {
-  database: "cjddnjfql",
+  database: "cjddnjfql2",
   connectionLimit: 10,
   host: "cjddnjfql2.cafe24.com",
   user: "cjddnjfql2",
   password: "wjdwhdgus!23",
+  multipleStatements: true,
+  typeCast: function (field, next) {
+    if (field.type == "VAR_STRING") {
+      return field.string();
+    }
+    return next();
+  },
 };
 
 const dbPool = require("mysql").createPool(db);
